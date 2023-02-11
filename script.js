@@ -1,5 +1,12 @@
 // Assignment code here
+var passLength;
+var passType;
 
+var generatePassword = document.getElementById("password");
+
+function inputPassword(){
+  
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
