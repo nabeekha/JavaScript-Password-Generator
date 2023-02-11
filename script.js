@@ -1,11 +1,16 @@
 // Assignment code here
-var passLength;
-var passType;
+var finalPassword;
 
 var generatePassword = document.getElementById("password");
 
-function inputPassword(){
-  
+function passPrompt(){
+  var passLength = prompt("Please select a password length betwen 8 and 128 characters");
+  var lowerCase = prompt("Should the password include lowercase letters?");
+  var upperCase = prompt("Should the password include uppercase letters?");
+  var numeric = prompt("Should the password include numbers?");
+  var specChar = prompt("Should the password include special characters?");
+
+  alert(finalPassword);
 }
 
 // Get references to the #generate element
