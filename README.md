@@ -34,6 +34,7 @@ Please view the deployed application link at the following location:
 https://nabeekha.github.io/JavaScript-Password-Generator/
 
 Please view screenshots of the application below:
+![alt text](./assets/password-generator-1.png)
 
 ## Credits
 
