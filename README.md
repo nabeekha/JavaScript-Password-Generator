@@ -1,1 +1,1 @@
-# JavaScript-Password-Generator
+# Password Generator Starter Code
