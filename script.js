@@ -1,5 +1,10 @@
 // Assignment code here
+
+// intial variables used to store each type of character
 var finalPassword;
+//initially tried separating each category of characted into an individual set
+// Now trying to combine into a single array and have the loops sort through a specific part of the longer array
+var allCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 var lowerLetters = "abcdefghijklmnopqrstuvwxyz";
 var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
@@ -9,17 +14,21 @@ var generatePassword = document.getElementById("password");
 
 function passPrompt(){
   var passLength = prompt("Please select a password length betwen 8 and 128 characters");
-
   var lowerCase = prompt("Should the password include lowercase letters?");
+  var upperCase = prompt("Should the password include uppercase letters?");
+  var numeric = prompt("Should the password include numbers?");
+  var specChar = prompt("Should the password include special characters?");
+
+ //for (var i = 0, a = passLength.length; i , passLength.length; i++){
+
   if (lowerCase === "yes"){
     var returnLower = "";
 
     for (var i = 0, a = lowerLetters.length; i < lowerLetters.length; i++) {
-      returnLower = lowerLetters.charAt(Math.floor(Math.random() * a ));
+      returnLower = allCharacters.charAt(Math.floor(Math.random() * a ));
     }
   }
 
-  var upperCase = prompt("Should the password include uppercase letters?");
   if (upperCase === "yes"){
     var returnUpper = "";
 
@@ -28,7 +37,6 @@ function passPrompt(){
     }
   }
 
-  var numeric = prompt("Should the password include numbers?");
   if (numeric === "yes"){
     var returnNum = "";
 
@@ -37,7 +45,6 @@ function passPrompt(){
     }
   }
 
-  var specChar = prompt("Should the password include special characters?");
   if (specChar === "yes"){
     var returnSpec = "";
 
@@ -46,9 +53,18 @@ function passPrompt(){
     }
   }
 
+  finalPassword = returnLower.concat(returnUpper, returnNum, returnSpec);
 
-  alert(finalPassword);
+  window.alert("your new password is" + finalPassword);
+
 }
+
+//finalPassword = returnLower.concat(returnUpper, returnNum, returnSpec);
+
+//window.alert("your new password is" + finalPassword);
+
+//}
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
