@@ -59,9 +59,9 @@ function passPrompt(){
 
 }
 
-//finalPassword = returnLower.concat(returnUpper, returnNum, returnSpec);
+// finalPassword = returnLower.concat(returnUpper, returnNum, returnSpec);
 
-//window.alert("your new password is" + finalPassword);
+// window.alert("your new password is" + finalPassword);
 
 //}
 
@@ -75,6 +75,8 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+  // console.log(finalPassword);
+  // return finalPassword;
 
 }
 
