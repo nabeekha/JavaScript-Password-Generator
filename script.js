@@ -12,68 +12,77 @@ var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
 var generatePassword = document.getElementById("password");
 
-function createPassword() {
+function passPrompt() {
   var password = ""
   var length = 0
+
+  //prompting for password 
+while (length < 8 || length > 128 || isNaN(length)) {
+  length = parseInt(prompt("Please select a password length betwen 8 and 128 characters"))
 }
 
-function passPrompt(){
-  //initial declaration of password length
+  var lowerCase = prompt("Should the password include lowercase letters?")
+  var upperCase = prompt("Should the password include uppercase letters?")
+  var numeric = prompt("Should the password include numbers?")
+  var specChar = prompt("Should the password include special characters?")
 
-  var passLength = prompt("Please select a password length betwen 8 and 128 characters");
-  var lowerCase = prompt("Should the password include lowercase letters?");
-  var upperCase = prompt("Should the password include uppercase letters?");
-  var numeric = prompt("Should the password include numbers?");
-  var specChar = prompt("Should the password include special characters?");
-  length = passLength
-
-
-
-
-  if (lowerCase === "yes"){
-    var returnLower = "";
-
-    for (var i = 0, a = lowerLetters.length; i < lowerLetters.length; i++) {
-      returnLower = allCharacters.charAt(Math.floor(Math.random() * a ));
-    }
+  // Build the character set based on user choices
+  var characterSet = "";
+  if (includeLower) {
+    characterSet += lowerLetters;
+  }
+  if (includeUpper) {
+    characterSet += upperLetters;
+  }
+  if (includeNumeric) {
+    characterSet += numbers;
+  }
+  if (includeSpecial) {
+    characterSet += specialChar;
   }
 
-  if (upperCase === "yes"){
-    var returnUpper = "";
+  // //character set based on user choices
+  // var characterSet = ""
+  // if (lowerCase === "yes"){
+  //   var returnLower = "";
 
-    for (var i = 0, a = upperLetters.length; i < upperLetters.length; i++) {
-      returnUpper = upperLetters.charAt(Math.floor(Math.random() * a ));
-    }
+  //   for (var i = 0, a = lowerLetters.length; i < lowerLetters.length; i++) {
+  //     returnLower = allCharacters.charAt(Math.floor(Math.random() * a ));
+  //   }
+  // }
+
+  // if (upperCase === "yes"){
+  //   var returnUpper = "";
+
+  //   for (var i = 0, a = upperLetters.length; i < upperLetters.length; i++) {
+  //     returnUpper = upperLetters.charAt(Math.floor(Math.random() * a ));
+  //   }
+  // }
+
+  // if (numeric === "yes"){
+  //   var returnNum = "";
+
+  //   for (var i = 0, a = numbers.length; i < numbers.length; i++) {
+  //     returnNum = numbers.charAt(Math.floor(Math.random() * a ));
+  //   }
+  // }
+
+  // if (specChar === "yes"){
+  //   var returnSpec = "";
+
+  //   for (var i = 0, a = specialChar.length; i < specialChar.length; i++) {
+  //     returnSpec = specialChar.charAt(Math.floor(Math.random() * a ));
+  //   }
+  // }
+
+  //generate the password via random selection
+  for (var i=0; i< length; i++) {
+    var randomNum = Math.floor(Math.random() * characterSet.length)
+    password += characterSet.charAt(randomNum)
   }
 
-  if (numeric === "yes"){
-    var returnNum = "";
-
-    for (var i = 0, a = numbers.length; i < numbers.length; i++) {
-      returnNum = numbers.charAt(Math.floor(Math.random() * a ));
-    }
-  }
-
-  if (specChar === "yes"){
-    var returnSpec = "";
-
-    for (var i = 0, a = specialChar.length; i < specialChar.length; i++) {
-      returnSpec = specialChar.charAt(Math.floor(Math.random() * a ));
-    }
-  }
-
-  finalPassword = returnLower.concat(returnUpper, returnNum, returnSpec);
-
-  window.alert("your new password is" + finalPassword);
-
+  return password
 }
-
-// finalPassword = returnLower.concat(returnUpper, returnNum, returnSpec);
-
-// window.alert("your new password is" + finalPassword);
-
-//}
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -84,9 +93,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-  // console.log(finalPassword);
-  // return finalPassword;
-
 }
 
 // Add event listener to generate button
