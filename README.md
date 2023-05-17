@@ -2,8 +2,6 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
 This project was built to utilize JavaScript to create backend functionality in websites. By creating this, I am able to improve my understanding of how a front-end website speaks to a backend server. This project creates a password generator, and thus increases security for any websites I build in the future. My motivation was to improve security and learn more about JavaScript.
 
 ## Table of Contents (Optional)
