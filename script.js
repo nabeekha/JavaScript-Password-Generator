@@ -10,27 +10,34 @@ var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
 var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
-var generatePassword = document.getElementById("password");
-
 function passPrompt() {
+  // initializing password variables and length
   var password = ""
   var length = 0
 
-  //prompting for password 
-while (length < 8 || length > 128 || isNaN(length)) {
-  length = parseInt(prompt("Please select a password length betwen 8 and 128 characters"))
-}
+  // function to validate if the response is affirmative or negative. Function treats all responses besides yes as no and enables the conditional response to be utilized
+  function validateResponse(response) {
+    var normalResponse = response.toLowerCase().trim();
+    return normalResponse === "yes" || normalResponse === "y";
+  }
 
-  var includeLower = prompt("Should the password include lowercase letters?")
-  var includeUpper = prompt("Should the password include uppercase letters?")
-  var includeNumeric = prompt("Should the password include numbers?")
-  var includeSpecial = prompt("Should the password include special characters?")
+  //prompting for password 
+  while (length < 8 || length > 128 || isNaN(length)) {
+    length = parseInt(prompt("Please select a password length betwen 8 and 128 characters"))
+  }
+
+  // prompting to include the different types of characters to include in the password
+  var includeLower = validateResponse(prompt("Should the password include lowercase letters?"))
+  var includeUpper = validateResponse(prompt("Should the password include uppercase letters?"))
+  var includeNumeric = validateResponse(prompt("Should the password include numbers?"))
+  var includeSpecial = validateResponse(prompt("Should the password include special characters?"))
+  console.log(includeLower, includeUpper, includeNumeric, includeSpecial)
 
   // Build the character set based on user choices
   var characterSet = "";
   if (includeLower) {
     characterSet += lowerLetters;
-  }
+  } 
   if (includeUpper) {
     characterSet += upperLetters;
   }
@@ -42,7 +49,7 @@ while (length < 8 || length > 128 || isNaN(length)) {
   }
 
   //generate the password via random selection
-  for (var i=0; i< length; i++) {
+  for (var i = 0; i < length; i++) {
     var randomNum = Math.floor(Math.random() * characterSet.length)
     password += characterSet.charAt(randomNum)
   }
